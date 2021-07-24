@@ -1,6 +1,7 @@
 import Header from './components/Header'
 import Meetings from './components/Meetings'
 import {useState} from 'react'
+import AddMeeting from './components/AddMeeting'
 
 function App() {
   const [meetings, setMeetings]=useState([
@@ -44,6 +45,7 @@ function App() {
       return (
     <div className='container'>
       <Header />
+      <AddMeeting />
       {meetings.length>0 ? <Meetings meetings={meetings} 
       onDelete={deleteMeeting}
       onToggle={toggleReminder}
