@@ -25,13 +25,20 @@ function App() {
     },
     
     ])
-  return (
+    //Delete Meeting function
+
+    const deleteMeeting=(id)=>{
+      setMeetings(meetings.filter((meeting)=>meeting.id!==id))
+    }
+
+      return (
     <div className='container'>
       <Header />
-      <Meetings meetings={meetings}/>
+      {meetings.length>0 ? <Meetings meetings={meetings} 
+      onDelete={deleteMeeting}/> : 'Nema unijetih sastanaka'}
     </div>
 
-  );
+  )
 }
 
 export default App;
