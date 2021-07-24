@@ -1,12 +1,12 @@
 import Meeting from './Meeting'
 
-const Meetings = ({meetings, onDelete}) => {
+const Meetings = ({meetings, onDelete, onToggle}) => {
 
     return (
     <>
     {meetings.map((meeting)=>(
     <Meeting key={meeting.id} meeting={meeting}
-    onDelete={onDelete}/>
+    onDelete={onDelete} onToggle={onToggle}/>
     ))}
     </>
     )

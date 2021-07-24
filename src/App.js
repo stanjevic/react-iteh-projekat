@@ -31,11 +31,23 @@ function App() {
       setMeetings(meetings.filter((meeting)=>meeting.id!==id))
     }
 
+    //Toggle Reminder 
+
+    const toggleReminder=(id)=>{
+
+      setMeetings(meetings.map((meeting)=>meeting.id===id ?
+       {...meeting, reminder:!meeting.reminder}: meeting))
+
+    }
+
+
       return (
     <div className='container'>
       <Header />
       {meetings.length>0 ? <Meetings meetings={meetings} 
-      onDelete={deleteMeeting}/> : 'Nema unijetih sastanaka'}
+      onDelete={deleteMeeting}
+      onToggle={toggleReminder}
+      /> : 'Nema unijetih sastanaka'}
     </div>
 
   )
