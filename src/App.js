@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header'
+import Meetings from './components/Meetings'
+import {useState} from 'react'
 
 function App() {
+  const [meetings, setMeetings]=useState([
+    {
+        id:1,
+         text: 'Prvi sastanak',
+         day: '05.Avgust u 14:30',
+         reminder:true,
+    },
+    {
+        id:2,
+         text: 'Drugi sastanak',
+         day: '06.Avgust u 14:30',
+         reminder:true,
+    },
+    
+    {
+        id:3,
+         text: 'Treci sastanak',
+         day: '07.Avgust u 14:30',
+         reminder:true,
+    },
+    
+    ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <Header />
+      <Meetings meetings={meetings}/>
     </div>
+
   );
 }
 
