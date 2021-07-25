@@ -4,9 +4,12 @@ const Meetings = ({meetings, onDelete, onToggle}) => {
 
     return (
     <>
-    {meetings.map((meeting)=>(
-    <Meeting key={meeting.id} meeting={meeting}
-    onDelete={onDelete} onToggle={onToggle}/>
+    {meetings.map((meeting, index)=>(
+    <Meeting 
+    key={index} 
+    meeting={meeting}
+    onDelete={onDelete} 
+    onToggle={onToggle}/>
     ))}
     </>
     )

@@ -1,0 +1,10 @@
+{
+  "meetings": [
+    {
+      "id": 1,
+      "text": "Prvi sastanak",
+      "day": "05.Avgust u 14:30",
+      "reminder": true
+    }
+  ]
+}

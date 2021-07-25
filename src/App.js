@@ -1,32 +1,31 @@
 import Header from './components/Header'
 import Meetings from './components/Meetings'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import AddMeeting from './components/AddMeeting'
 
-function App() {
+const App = ()=> {
   const [showAddMeeting, setShowAddMeeting]=useState(false)
-  const [meetings, setMeetings]=useState([
-    {
-        id:1,
-         text: 'Prvi sastanak',
-         day: '05.Avgust u 14:30',
-         reminder:true,
-    },
-    {
-        id:2,
-         text: 'Drugi sastanak',
-         day: '06.Avgust u 14:30',
-         reminder:true,
-    },
+  const [meetings, setMeetings]=useState([])
+
+
+  useEffect(()=>{
+    const getMeetings=async()=>{
+      const meetingsFromServer=await fetchMeetings()
+      setMeetings(meetingsFromServer) 
+    }
     
-    {
-        id:3,
-         text: 'Treci sastanak',
-         day: '07.Avgust u 14:30',
-         reminder:true,
-    },
-    
-    ])
+    getMeetings()
+
+  }, [] )
+
+  //Fetch meetings
+  const fetchMeetings=async()=>{
+    const res=await fetch('http://localhost:5000/meetings')
+    const data =await res.json()
+
+   return data
+  }
+
 
     //Add Meeting
     const addMeeting=(meeting)=>{
@@ -38,10 +37,16 @@ function App() {
 
 
 
-    //Delete Meeting function
+    //Delete Meeting
 
-    const deleteMeeting=(id)=>{
-      setMeetings(meetings.filter((meeting)=>meeting.id!==id))
+    const deleteMeeting= async (id)=>{
+      await fetch(`http://localhost:5000/meetings/${id}`,
+      {
+        method:'DELETE'
+      })
+
+      setMeetings(meetings.filter((meeting)=>
+      meeting.id!==id))
     }
 
     //Toggle Reminder 
