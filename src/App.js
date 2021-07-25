@@ -28,14 +28,21 @@ const App = ()=> {
 
 
     //Add Meeting
-    const addMeeting=(meeting)=>{
-      const id= Math.floor(Math.random()*1000)+1
-      const newMeeting={id,...meeting}
-      setMeetings([...meetings, newMeeting])
+    const addMeeting= async(meeting)=>{
+      const res= await fetch(`http://localhost:5000/meetings`,
+     { 
+       method:'POST',
+      headers:{
+        'Content-type':'application/json'
+      },
+      body:JSON.stringify(meeting)
+    })
 
-    }
+    const data=await res.json()
 
+    setMeetings([...meetings, data])
 
+  }
 
     //Delete Meeting
 

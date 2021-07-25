@@ -5,6 +5,18 @@
       "text": "Prvi sastanak",
       "day": "05.Avgust u 14:30",
       "reminder": true
+    },
+    {
+      "text": "Lična karta ",
+      "day": "11.Avgust u 09:00",
+      "reminder": true,
+      "id": 2
+    },
+    {
+      "text": "Test ",
+      "day": "petak",
+      "reminder": true,
+      "id": 3
     }
   ]
 }

@@ -31,7 +31,7 @@ const AddMeeting = ({onAdd}) => {
 
 <div className='form-control'>
     <label>Datum i vrijeme</label>
-    <input type='text' placeholder='Unesi vrijeme i mjesto'value={day} 
+    <input type='text' placeholder='Unesi datum i vrijeme'value={day} 
     onChange={(e)=>setDay(e.target.value)}/>
 </div>
 
