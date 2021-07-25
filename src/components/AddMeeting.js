@@ -1,29 +1,45 @@
 import {useState} from 'react'
 
-const AddMeeting = () => {
+const AddMeeting = ({onAdd}) => {
     const [text, setText]=useState('')
     const [day, setDay]=useState('')
     const [reminder, setReminder]=useState(false)
 
+    const onSubmit=(e)=>{
+        e.preventDefault()
+
+        if(!text){
+            alert ('Molimo vas unesite sastanak')
+            return
+        }
+
+        onAdd({ text,day,reminder})
+
+        setText('')
+        setDay('')
+        setReminder(false)
+    }
 
     return (
 
-      <form className='add-form'>
+      <form className='add-form' onSubmit={onSubmit}>
 <div className='form-control'>
     <label>Sastanak</label>
-    <input type='text' placehodler='Unesi sastanak' value={text} 
+    <input type='text' placeholder='Unesi sastanak' value={text} 
     onChange={(e)=>setText(e.target.value)}/>
 </div>
 
 <div className='form-control'>
     <label>Datum i vrijeme</label>
-    <input type='text' placehodler='Unesi vrijeme i mjesto'value={day} 
+    <input type='text' placeholder='Unesi vrijeme i mjesto'value={day} 
     onChange={(e)=>setDay(e.target.value)}/>
 </div>
 
 <div className='form-control form-control-check'>
     <label>Dodaj podsetnik</label>
-    <input type='checkbox' value={reminder} 
+    <input type='checkbox'
+    checked={reminder}
+    value={reminder} 
     onChange={(e)=>setReminder(e.currentTarget.checked)}/>
 </div>
 

@@ -4,6 +4,7 @@ import {useState} from 'react'
 import AddMeeting from './components/AddMeeting'
 
 function App() {
+  const [showAddMeeting, setShowAddMeeting]=useState(false)
   const [meetings, setMeetings]=useState([
     {
         id:1,
@@ -26,6 +27,17 @@ function App() {
     },
     
     ])
+
+    //Add Meeting
+    const addMeeting=(meeting)=>{
+      const id= Math.floor(Math.random()*1000)+1
+      const newMeeting={id,...meeting}
+      setMeetings([...meetings, newMeeting])
+
+    }
+
+
+
     //Delete Meeting function
 
     const deleteMeeting=(id)=>{
@@ -44,8 +56,13 @@ function App() {
 
       return (
     <div className='container'>
-      <Header />
-      <AddMeeting />
+
+      <Header 
+      onAdd={()=>setShowAddMeeting(!showAddMeeting)}
+      showAdd={showAddMeeting}
+      />
+
+     {showAddMeeting && <AddMeeting onAdd={addMeeting} /> }
       {meetings.length>0 ? <Meetings meetings={meetings} 
       onDelete={deleteMeeting}
       onToggle={toggleReminder}
